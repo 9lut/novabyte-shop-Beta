@@ -1,15 +1,14 @@
-// login.jsx
 import React, { useState } from "react";
-import { Col, Row, Button, FormGroup, Input } from "reactstrap";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { storeUser } from "../helpers";
 import Swal from 'sweetalert2';
+import Navbar from '../components/novaNavbar';
 import conf from "../conf";
-
-const initialUser = { password: "", identifier: "" };
+import "./Login.css";
 
 const Login = () => {
+  const initialUser = { password: "", identifier: "" };
   const [user, setUser] = useState(initialUser);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -57,39 +56,44 @@ const Login = () => {
   };
 
   return (
-    <Row className="login">
-      <Col sm="12" md={{ size: 4, offset: 4 }}>
-        <div>
-          <h2>Login:</h2>
-          <FormGroup>
-            <Input
-              type="email"
-              name="identifier"
-              value={user.identifier}
-              onChange={handleChange}
-              onKeyPress={handleKeyPress}
-              placeholder="Enter your email"
-            />
-          </FormGroup>
-          <FormGroup>
-            <Input
-              type="password"
-              name="password"
-              value={user.password}
-              onChange={handleChange}
-              onKeyPress={handleKeyPress}
-              placeholder="Enter password"
-            />
-          </FormGroup>
-          <Button color="primary" onClick={handleLogin} disabled={loading}>
-            {loading ? "Loading..." : "Login"}
-          </Button>
-          <div>
-            <Link to="/register">คลิกตรงนี้</Link> เพื่อสมัครสมาชิก
+    <div>
+      <Navbar />
+      <div className="login-page">
+        <div className="login-container">
+          <div className="form-container">
+            <h2>เข้าสู่ระบบ</h2>
+            <div className="form-group">
+              <input
+                type="email"
+                name="identifier"
+                value={user.identifier}
+                onChange={handleChange}
+                onKeyPress={handleKeyPress}
+                placeholder="อีเมลล์"
+                className="form-input"
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="password"
+                name="password"
+                value={user.password}
+                onChange={handleChange}
+                onKeyPress={handleKeyPress}
+                placeholder="รหัสผ่าน"
+                className="form-input"
+              />
+            </div>
+            <button className="btn-primary" onClick={handleLogin} disabled={loading}>
+              {loading ? "Loading..." : "Login"}
+            </button>
+            <div className="link-to-register">
+              <div>ยังไม่มีบัญชีใช่ไหม? <Link to="/register">สมัครตรงนี้</Link> </div>
+            </div>
           </div>
         </div>
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 };
 

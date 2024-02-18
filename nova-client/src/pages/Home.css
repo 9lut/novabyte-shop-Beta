@@ -1,0 +1,51 @@
+body {
+    margin: 0; /* เพื่อลบ margin ที่มีอยู่เดิม */
+    font-family: Arial, sans-serif; /* เพิ่ม font-family ตามความเหมาะสม */
+}
+
+.container {
+    max-width: 1200px; /* กำหนดความกว้างสูงสุดของ container */
+    margin: 0 auto; /* จัดตำแหน่งกลาง */
+    padding: 0 20px; /* เพิ่ม padding ด้านซ้ายและด้านขวา */
+}
+
+.title{
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 0 10px; /* เปลี่ยน padding เมื่อหน้าจอเล็กกว่า */
+    }
+}
+
+.home {
+    padding: 20px;
+}
+
+.category-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #0080ff;
+}
+
+.category {
+    margin-bottom: 20px;
+}
+
+.product-container {
+    display: grid; /* เปลี่ยนเป็น grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* สร้างคอลัมน์อัตโนมัติ 1 คอลัมน์ต่อแถว และ ขนาดขั้นต่ำของแต่ละคอลัมน์คือ 300px */
+    gap: 20px; /* ระยะห่างระหว่างสินค้า */
+}
+
+.product-container > * {
+    flex: 1;
+    margin: 0; /* ลบ margin ที่มีอยู่เดิม */
+}
+
+@media screen and (max-width: 768px) {
+    .product-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* เปลี่ยนขนาดคอลัมน์เมื่อหน้าจอเล็กกว่า */
+    }
+}
