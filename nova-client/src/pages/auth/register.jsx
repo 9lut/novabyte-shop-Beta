@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from '../components/novaNavbar';
+import Navbar from '../../components/novaNavbar';
 import Swal from 'sweetalert2';
-import conf from "../conf";
+import conf from "../../conf";
 
 const initialUser = { email: "", username: "" , password: "", confirmPassword: ""};
 const Registration = () => {

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { storeUser } from "../helpers";
+import { storeUser } from "../../helpers";
 import Swal from 'sweetalert2';
-import Navbar from '../components/novaNavbar';
-import conf from "../conf";
+import Navbar from '../../components/novaNavbar';
+import conf from "../../conf";
 import "./Login.css";
 
 const Login = () => {

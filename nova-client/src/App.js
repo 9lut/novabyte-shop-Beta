@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Homepage from "./pages/home";
-import Login from "./pages/login";
-import Register from "./pages/register";
+import Login from "./pages/auth/login";
+import Register from "./pages/auth/register";
 import Profile from "./pages/profile/profile";
 import ProductView from './components/product/productView';
 
