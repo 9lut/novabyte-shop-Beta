@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , NavLink } from 'react-router-dom';
 import { userData } from '../helpers';
+import { FaShoppingBasket } from "react-icons/fa";
 import "./NovaNavbar.css"
 
 const NovaNavbar = () => {
@@ -46,10 +47,16 @@ const NovaNavbar = () => {
         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <a className="nav-link" href="#">สินค้าทั้งหมด</a>
+              <a className="nav-link" href="/productall">สินค้าทั้งหมด</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">ชำระการโอน</a>
+              <a className="nav-link" href="/payment">แจ้งการโอน</a>
+            </li>
+            <li className="nav-item">
+              <NavLink to="#" className="nav-link basket-icon-wrapper">
+              <span className="basket-items">{0}</span>
+              <FaShoppingBasket className="basket-icon" />
+              </NavLink>
             </li>
             <li className="nav-item">
               {isLoggedIn ? (
@@ -68,6 +75,7 @@ const NovaNavbar = () => {
               )}
             </li>
           </ul>
+
         </div>
       </div>
     </nav>
