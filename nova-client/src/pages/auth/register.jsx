@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import Navbar from '../../components/novaNavbar';
 import Swal from 'sweetalert2';
 import conf from "../../conf";
@@ -21,30 +21,53 @@ const Registration = () => {
   const signUp = async () => {
     try {
       const url = `${conf.apiPrefix}/api/auth/local/register`;
-      if (user.username && user.email && user.password && user.password === user.confirmPassword) {
-        const res = await axios.post(url, user);
-        if (!!res) {
-          setUser(initialUser);
-          navigate("/login");
-          Swal.fire({
-            icon: 'success',
-            title: 'สมัครสำเร็จ',
-            text: 'ยินดีต้อนรับเข้าสู่เว็บไซต์ NovaByte Shop',
-          });
-        }
-      } else {
+      // ตรวจสอบว่ามีฟิลด์แต่ละอันถูกกรอกหรือไม่
+      if (!user.name || !user.username || !user.email || !user.password || !user.confirmPassword) {
+        Swal.fire({
+          icon: 'error',
+          title: 'สมัครล้มเหลว',
+          text: 'กรุณากรอกข้อมูลให้ครบทุกช่อง',
+        });
+        return;
+      }
+  
+      // ตรวจสอบรหัสผ่านว่ามีความยาวอย่างน้อย 6 ตัวอักษรหรือไม่
+      if (user.password.length < 6) {
+        Swal.fire({
+          icon: 'error',
+          title: 'สมัครล้มเหลว',
+          text: 'รหัสผ่านต้องมีความยาวอย่างน้อย 6 ตัวอักษร',
+        });
+        return;
+      }
+  
+      // ตรวจสอบว่ารหัสผ่านและยืนยันรหัสผ่านตรงกันหรือไม่
+      if (user.password !== user.confirmPassword) {
         Swal.fire({
           icon: 'error',
           title: 'สมัครล้มเหลว',
           text: 'กรุณาตรวจสอบรหัสผ่านและยืนยันรหัสผ่านของคุณ',
         });
+        return;
+      }
+  
+      // ส่งคำขอสมัครผ่าน API
+      const res = await axios.post(url, user);
+      if (!!res) {
+        setUser(initialUser);
+        navigate("/login");
+        Swal.fire({
+          icon: 'success',
+          title: 'สมัครสำเร็จ',
+          text: 'ยินดีต้อนรับเข้าสู่เว็บไซต์ NovaByte Shop',
+        });
       }
     } catch (error) {
-        Swal.fire({
-            icon: 'error',
-            title: 'สมัครล้มเหลว',
-            text: 'กรุณาลองอีกครั้ง.',
-          });
+      Swal.fire({
+        icon: 'error',
+        title: 'สมัครล้มเหลว',
+        text: 'กรุณาลองอีกครั้ง.',
+      });
     }
   };
 
@@ -108,6 +131,9 @@ const Registration = () => {
             <button className="btn-primary" onClick={signUp}>
               สมัครสมาชิก
             </button>
+            <div className="link-to-register">
+              <div>มีบัญชีแล้ว <Link to="/login">เข้าสู่ระบบ</Link> </div>
+            </div>
           </div>
         </div>
       </div>

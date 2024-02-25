@@ -37,6 +37,12 @@ const Login = () => {
             text: 'ยินดีต้อนรับเข้าสู่เว็บไซต์ NovaByte Shop',
           });
         }
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'การเข้าสู่ระบบล้มเหลว',
+          text: 'กรุณากรอกอีเมลและรหัสผ่าน',
+        });
       }
     } catch (error) {
       Swal.fire({
@@ -63,17 +69,19 @@ const Login = () => {
           <div className="form-container">
             <h2>เข้าสู่ระบบ</h2>
             <div className="form-group">
+              <label>บัญชีผู้ใช้หรืออีเมล</label>
               <input
                 type="email"
                 name="identifier"
                 value={user.identifier}
                 onChange={handleChange}
                 onKeyPress={handleKeyPress}
-                placeholder="อีเมลล์"
+                placeholder="อีเมล"
                 className="form-input"
               />
             </div>
             <div className="form-group">
+              <label>รหัสผ่าน</label>
               <input
                 type="password"
                 name="password"
@@ -85,7 +93,7 @@ const Login = () => {
               />
             </div>
             <button className="btn-primary" onClick={handleLogin} disabled={loading}>
-              {loading ? "Loading..." : "Login"}
+              {loading ? "กำลังเข้าสู่ระบบ" : "เข้าสู่ระบบ"}
             </button>
             <div className="link-to-register">
               <div>ยังไม่มีบัญชีใช่ไหม? <Link to="/register">สมัครตรงนี้</Link> </div>
