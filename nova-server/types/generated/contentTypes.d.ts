@@ -380,6 +380,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
+    Show: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -419,11 +420,8 @@ export interface ApiPaymentPayment extends Schema.CollectionType {
       ]
     >;
     slipImage: Attribute.Media;
-    users_permissions_user: Attribute.Relation<
-      'api::payment.payment',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
+    username: Attribute.String;
+    status: Attribute.Enumeration<['Succeed', 'Inspecting', 'Cancel', 'Fail']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -838,11 +836,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.role'
     >;
     name: Attribute.String;
-    payment: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::payment.payment'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
