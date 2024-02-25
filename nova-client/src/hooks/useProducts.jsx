@@ -33,5 +33,5 @@ export const useProducts = () => {
     fetchCategories();
   }, []);
 
-  return { categories, products };
+  return { categories, products};
 };

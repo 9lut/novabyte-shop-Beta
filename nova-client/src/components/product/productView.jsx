@@ -5,6 +5,7 @@ import Navbar from '../novaNavbar';
 import conf from "../../conf";
 import './ProductView.css';
 import Loading from '../Loading';
+import Footer from '../Footer';
 
 
 function ProductView() {
@@ -41,16 +42,17 @@ function ProductView() {
               </div>
             </div>
           </div>
-          <div className="col-md-6"> {/* แบ่งส่วนเป็น 6 ของขนาดหน้าจอมากสุด (medium) */}
+          <div className="col-md-6">
             <div className="product-info">
               <h2>{product.attributes.title}</h2>
               <p>{product.attributes.description}</p>
               <p>ราคา: ฿{product.attributes.price}</p>
-              <button className="btn btn-primary">เพิ่มลงตะกร้า</button> {/* เพิ่มปุ่มใส่ตะกร้า */}
+              <button className="btn btn-primary">เพิ่มลงตะกร้า</button>
             </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
