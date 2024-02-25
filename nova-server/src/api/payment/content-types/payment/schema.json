@@ -37,11 +37,17 @@
         "images"
       ]
     },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "payment"
+    "username": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Succeed",
+        "Inspecting",
+        "Cancel",
+        "Fail"
+      ]
     }
   }
 }

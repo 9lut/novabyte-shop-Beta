@@ -67,12 +67,6 @@
     },
     "name": {
       "type": "string"
-    },
-    "payment": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::payment.payment",
-      "mappedBy": "users_permissions_user"
     }
   }
 }
