@@ -1,6 +1,6 @@
 body {
     margin: 0; /* เพื่อลบ margin ที่มีอยู่เดิม */
-    font-family: Arial, sans-serif; /* เพิ่ม font-family ตามความเหมาะสม */
+    font-family: Arial, sans-serif;
 }
 
 .container {
@@ -11,12 +11,6 @@ body {
 
 .title{
     text-align: center;
-}
-
-@media screen and (max-width: 768px) {
-    .container {
-        padding: 0 10px; /* เปลี่ยน padding เมื่อหน้าจอเล็กกว่า */
-    }
 }
 
 .home {
@@ -34,18 +28,29 @@ body {
 }
 
 .product-container {
-    display: grid; /* เปลี่ยนเป็น grid layout */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* สร้างคอลัมน์อัตโนมัติ 1 คอลัมน์ต่อแถว และ ขนาดขั้นต่ำของแต่ละคอลัมน์คือ 300px */
-    gap: 20px; /* ระยะห่างระหว่างสินค้า */
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* สร้างคอลัมน์ 4 คอลัมน์ */
+
 }
 
 .product-container > * {
-    flex: 1;
+    flex: none; /* ลบ flex ออกเพราะเราใช้ grid layout */
     margin: 0; /* ลบ margin ที่มีอยู่เดิม */
 }
 
 @media screen and (max-width: 768px) {
+    .container {
+        padding: 0 10px; /* เปลี่ยน padding เมื่อหน้าจอเล็กกว่า */
+    }
     .product-container {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* เปลี่ยนขนาดคอลัมน์เมื่อหน้าจอเล็กกว่า */
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .products-container {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 }
