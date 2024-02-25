@@ -1,24 +1,41 @@
 /* Profile.css */
-.profile-container {
-  padding: 20px;
-  margin: auto;
-  max-width: 600px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+.profile-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.profile-content {
+.profile-container {
+  padding: 20px;
+  margin: 20px;
+  width: 90%; /* เปลี่ยนเป็นความกว้างเป็นเปอร์เซ็นต์ */
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.profile-title {
+  font-size: 24px; /* ลดขนาดตัวหนังสือของหัวข้อ */
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px; /* เพิ่มช่องว่างด้านล่างของหัวข้อ */
+}
+
+.profile-details {
   margin-top: 20px;
 }
 
-/* Style for the headings */
-h2 {
-  font-size: 24px;
-  color: #333;
+.detail-item {
+  margin-bottom: 10px; /* ลดระยะห่างระหว่างรายการ */
 }
 
-/* Style for the paragraphs */
-p {
-  font-size: 16px;
+.detail-label {
+  font-weight: bold;
   color: #555;
+  margin-right: 5px; /* ลดระยะห่างขวาของรายการ */
+}
+
+.detail-value {
+  color: #333;
 }
