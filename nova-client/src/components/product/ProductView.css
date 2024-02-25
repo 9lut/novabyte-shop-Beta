@@ -1,0 +1,36 @@
+/* ProductView.css */
+
+.product-image img {
+
+    width: 400px; /* กำหนดความกว้างของรูปภาพเป็น 200px */
+    height: 400px; /* กำหนดความสูงของรูปภาพเป็น 200px */
+  }
+.product-details {
+    display: flex;
+  }
+  
+  .product-image {
+    margin-right: 10px; /* กำหนดระยะห่างระหว่างรูปภาพและข้อความ */
+  }
+
+.product-details {
+    display: grid;
+    grid-template-columns: auto 1fr; /* กำหนดขนาดคอลัมน์ของ Grid Layout */
+    grid-column-gap: 20px; /* กำหนดระยะห่างระหว่างคอลัมน์ */
+}
+
+@media (max-width: 768px) {
+    .product-image img {
+      width: auto; /* กำหนดให้รูปภาพเต็มกว้างของ container */
+      height: auto; /* ปรับความสูงให้เพื่อรักษาอัตราส่วน */
+    }
+  
+    .product-details {
+      flex-direction: column; /* จัดเรียงใหม่ให้เป็นแนวตั้ง */
+      align-items: center; /* จัดให้เนื้อหาอยู่ตรงกลาง */
+    }
+  
+    .product-info {
+      margin-top: 20px; /* กำหนดระยะห่างของข้อความด้านล่าง */
+    }
+  }
