@@ -5,7 +5,7 @@ export const storeUser = (data) => {
   localStorage.setItem(
     "user",
     JSON.stringify({
-      name:data.user.name,
+      name: data.user.name,
       username: data.user.username,
       jwt: data.jwt,
       email: data.user.email,
@@ -23,10 +23,10 @@ export const clearUser = () => {
   localStorage.removeItem("user");
 };
 
-export const Protector = ({ Component }) => {
+export const Protector = ({ Component, ...rest }) => {
   const navigate = useNavigate();
 
-  const { jwt,} = userData();
+  const { jwt } = userData();
 
   useEffect(() => {
     if (!jwt) {
@@ -34,5 +34,5 @@ export const Protector = ({ Component }) => {
     }
   }, [navigate, jwt]);
 
-  return 
+  return <Component {...rest} />;
 };
